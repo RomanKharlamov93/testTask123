@@ -1,0 +1,22 @@
+<mat-toolbar>
+  <span routerLink="/" class="logo">Githuber</span>
+  <span class="spacer"></span>
+  <ng-container *ngIf="authService.currentUser">
+    <button mat-button color="primary" mat-button [matMenuTriggerFor]="menu">
+      {{ authService.currentUser.email }}
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/favourites']">
+        <span>Favourites</span>
+      </button>
+      <button mat-menu-item (click)="authService.signOut()">
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </ng-container>
+
+  <ng-container *ngIf="!authService.currentUser">
+    <button mat-button color="primary" routerLink="/auth/sign-in">Sign in</button>
+    <button mat-flat-button color="primary" routerLink="/auth/sign-up">Sign up</button>
+  </ng-container>
+</mat-toolbar>

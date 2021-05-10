@@ -1,0 +1,15 @@
+<div class="container">
+  <button style="display: block; margin-bottom: 20px" mat-button [routerLink]="['/main']">
+    Назад
+  </button>
+  <mat-list role="list" *ngIf="data.length">
+    <mat-list-item role="listitem" *ngFor="let project of data">
+      <mat-card class="card">
+        {{ project?.name }}
+        <button mat-button mat-icon-button (click)="removeFromFavourites(project)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-card>
+    </mat-list-item>
+  </mat-list>
+</div>
